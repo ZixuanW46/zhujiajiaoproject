@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>「角里囡囡」- 朱家角智慧文旅项目交互式提案 (AI增强版)</title>
+    <!-- Chosen Palette: Ancient Parchment -->
+    <!-- Application Structure Plan: A top-down, single-page narrative flow. Starts with a hero section, moves to "Challenge & Opportunity", presents the "Solution", visualizes "Core Value", demonstrates "AI Empowerment" with a live Gemini API call, lays out the "Roadmap", and ends with a call to action. This structure logically guides users, with the AI section acting as a powerful proof-of-concept for technological capabilities. -->
+    <!-- Visualization & Content Choices: 1. Challenges/Opportunities: Interactive cards. Goal: Inform. 2. Solution: Tabbed interface. Goal: Organize. 3. Value (ARPU): Interactive bar chart. Goal: Compare/Persuade. 4. AI Empowerment: Live text generation via Gemini API. Goal: Demonstrate capability. Method: JS fetch call to Gemini. 5. Roadmap: Visual timeline. Goal: Show Change. All choices prioritize clarity and interaction. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="antialiased">
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section
+        class="min-h-screen flex items-center justify-center text-center bg-cover bg-center"
+        style="
+          background-image: linear-gradient(
+              to top,
+              rgba(253, 251, 246, 1),
+              rgba(253, 251, 246, 0)
+            ),
+            url('https://images.unsplash.com/photo-1594243673322-1e03a93e3js-4?q=80&w=1920&auto=format&fit=crop');
+        "
+      >
+        <div class="px-6">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-wider">
+            开启朱家角古镇的<span class="text-[#8A817C]">智慧文旅</span>新篇章
+          </h1>
+          <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+            一份关于「角里囡囡」项目的交互式提案，旨在通过"IP潮玩+数字科技"，激活古镇新活力，创造前所未有的沉浸式旅行体验。
+          </p>
+          <div class="mt-8">
+            <a
+              href="#opportunity"
+              class="bg-[#8A817C] text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#3C3C3C] transition-colors"
+              >探索完整提案</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Opportunity Section -->
+      <section id="opportunity" class="py-20 px-6">
+        <div class="container mx-auto">
+          <h2 class="section-title">挑战与机遇</h2>
+          <p class="section-subtitle">
+            在深刻理解朱家角当前市场地位的基础上，我们看到了挑战背后的巨大机遇，三大时代趋势的交汇，正催生智慧文旅的黄金时代。
+          </p>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="bg-white/50 p-6 rounded-xl shadow-lg border border-gray-200/50 fade-in"
+            >
+              <div class="text-4xl mb-4">💎</div>
+              <h3 class="text-xl font-bold mb-2">机遇一：潮玩经济爆发</h3>
+              <p class="text-gray-600">
+                Z世代对个性化、情感价值的消费需求，为文旅IP提供了广阔市场。近期中国潮玩IP"Labubu"在海外的爆火，证明了优质本土IP具备走向世界的巨大潜力。
+              </p>
+            </div>
+            <div
+              class="bg-white/50 p-6 rounded-xl shadow-lg border border-gray-200/50 fade-in"
+            >
+              <div class="text-4xl mb-4">⚙️</div>
+              <h3 class="text-xl font-bold mb-2">机遇二：智慧文旅成为刚需</h3>
+              <p class="text-gray-600">
+                AR、NFC、大数据等技术不再是附加题，而是提升游客体验、优化运营效率的"必答题"，是行业升级的必然选择。
+              </p>
+            </div>
+            <div
+              class="bg-white/50 p-6 rounded-xl shadow-lg border border-gray-200/50 fade-in"
+            >
+              <div class="text-4xl mb-4">🔗</div>
+              <h3 class="text-xl font-bold mb-2">机遇三："IP+文旅"深度融合</h3>
+              <p class="text-gray-600">
+                将地域文化转化为有生命力、有故事感的IP，已被反复验证是吸引年轻消费者、实现品牌焕新与消费升级的有效路径。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solution Section -->
+      <section id="solution" class="py-20 px-6 bg-white/60">
+        <div class="container mx-auto">
+          <h2 class="section-title">我们的解决方案</h2>
+          <p class="section-subtitle">
+            我们提供的是一套完整的"产品即服务"解决方案。游客购买的不仅是一个可爱的IP娃娃，更是解锁整个朱家角奇妙旅程的钥匙。
+          </p>
+
+          <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8">
+            <!-- Tabs -->
+            <div class="flex justify-center border-b mb-8 flex-wrap">
+              <button
+                class="tab-btn active px-4 py-2 md:px-8 md:py-3 font-semibold border-b-2 border-transparent"
+                data-tab="doll"
+              >
+                IP载体：角里囡囡
+              </button>
+              <button
+                class="tab-btn px-4 py-2 md:px-8 md:py-3 font-semibold border-b-2 border-transparent text-gray-500"
+                data-tab="app"
+              >
+                互动App：私人向导
+              </button>
+              <button
+                class="tab-btn px-4 py-2 md:px-8 md:py-3 font-semibold border-b-2 border-transparent text-gray-500"
+                data-tab="service"
+              >
+                整合服务：旅行管家
+              </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="tab-content" class="fade-in visible">
+              <div class="tab-pane active" id="doll-content">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                  <img
+                    src="https://placehold.co/600x600/E2E8F0/4A5568?text=角里囡囡IP形象"
+                    alt="角里囡囡IP形象"
+                    class="rounded-lg w-full"
+                  />
+                  <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                      会讲故事的"角里囡囡"娃娃
+                    </h3>
+                    <p class="mb-4 text-gray-600">
+                      深度融合朱家角元素（放生桥、摇橹船等）设计的潮玩IP，是游客旅途中的"专属旅伴"。
+                    </p>
+                    <ul class="space-y-3">
+                      <li class="flex items-start">
+                        <span class="text-[#8A817C] font-bold mr-2">●</span>
+                        <div>
+                          <strong class="text-gray-800">"领养仪式"</strong
+                          >：游客可选配饰、为娃娃取名，生成电子"出生证"，建立情感连接。
+                        </div>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-[#8A817C] font-bold mr-2">●</span>
+                        <div>
+                          <strong class="text-gray-800">收藏价值</strong
+                          >：推出季节限定、主题款、隐藏款，激发收藏和复购欲望。
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane hidden" id="app-content">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                  <img
+                    src="https://placehold.co/600x600/E2E8F0/4A5568?text=互动App界面"
+                    alt="互动App界面"
+                    class="rounded-lg w-full"
+                  />
+                  <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                      有温度的"私人向导"App
+                    </h3>
+                    <p class="mb-4 text-gray-600">
+                      激活娃娃后即可解锁，提供多语言讲解、手绘地图及主题路线。
+                    </p>
+                    <ul class="space-y-3">
+                      <li class="flex items-start">
+                        <span class="text-[#8A817C] font-bold mr-2">●</span>
+                        <div>
+                          <strong class="text-gray-800">多语言支持</strong
+                          >：服务全球游客，打破信息壁垒。
+                        </div>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-[#8A817C] font-bold mr-2">●</span>
+                        <div>
+                          <strong class="text-gray-800">沉浸式互动</strong
+                          >：在特定地点触发AR互动、解谜任务，让历史"活"起来。
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane hidden" id="service-content">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                  <img
+                    src="https://placehold.co/600x600/E2E8F0/4A5568?text=NFC整合服务示意"
+                    alt="NFC整合服务"
+                    class="rounded-lg w-full"
+                  />
+                  <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                      全能的"旅行管家"服务
+                    </h3>
+                    <p class="mb-4 text-gray-600">
+                      娃娃内置NFC芯片，是承载一切服务的核心，实现"一娃通游"。
+                    </p>
+                    <ul class="space-y-3">
+                      <li class="flex items-start">
+                        <span class="text-[#8A817C] font-bold mr-2">●</span>
+                        <div>
+                          <strong class="text-gray-800">通行与消费</strong
+                          >：刷娃娃即可进入景点、乘坐游船、在合作商户兑换商品。
+                        </div>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-[#8A817C] font-bold mr-2">●</span>
+                        <div>
+                          <strong class="text-gray-800">"时光胶囊"解锁</strong
+                          >：娃娃是独一无二的记忆载体，NFC轻触即可唤醒旅途中的照片与视频。
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Value Section -->
+      <section id="value" class="py-20 px-6">
+        <div class="container mx-auto">
+          <h2 class="section-title">核心价值</h2>
+          <p class="section-subtitle">
+            我们的方案不仅是产品创新，更是为朱家角带来直接、可观的商业回报与品牌增值的完整商业模式。
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-8 items-center mb-12 fade-in">
+            <div>
+              <h3 class="text-2xl font-bold mb-4">
+                价值一：显著提升游客人均消费 (ARPU)
+              </h3>
+              <p class="text-gray-600 mb-4">
+                通过销售定价远高于门票的"娃娃体验包"，直接将游客的单次消费价值提升数倍。请拖动滑块，查看不同套餐定价下的收入增长潜力。
+              </p>
+              <div class="mb-4">
+                <label for="price-slider" class="block mb-2 font-semibold"
+                  >"角里囡囡"套餐定价:
+                  <span id="price-label" class="text-[#8A817C] font-bold"
+                    >199</span
+                  >
+                  元</label
+                >
+                <input
+                  type="range"
+                  id="price-slider"
+                  min="99"
+                  max="299"
+                  value="199"
+                  step="10"
+                  class="w-full"
+                />
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="arpuChart"></canvas>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="bg-white p-6 rounded-xl shadow-lg border border-gray-200/50 fade-in"
+            >
+              <h3 class="text-xl font-bold mb-2">
+                价值二：焕新品牌，吸引年轻客群
+              </h3>
+              <p class="text-gray-600">
+                潮玩属性精准切入年轻消费群体，"角里囡囡"本身就是极佳的社交货币，能引发小红书、抖音等平台的病毒式传播。
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-xl shadow-lg border border-gray-200/50 fade-in"
+            >
+              <h3 class="text-xl font-bold mb-2">
+                价值三：升级国际服务，深化文化输出
+              </h3>
+              <p class="text-gray-600">
+                我们为朱家角庞大的国际客流提供无缝的深度体验，不仅解决语言和支付障碍，更通过互动故事精准传递中国文化。
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-xl shadow-lg border border-gray-200/50 fade-in"
+            >
+              <h3 class="text-xl font-bold mb-2">价值四：赋能精细化运营</h3>
+              <p class="text-gray-600">
+                通过App和NFC后台数据，匿名化洞察游客动线、偏好等信息，实现从"经验管理"到"数据驱动"的跨越。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gemini API Section -->
+      <section id="ai-empowerment" class="py-20 px-6 bg-white/60">
+        <div class="container mx-auto">
+          <h2 class="section-title">AI赋能：探索营销新思路</h2>
+          <p class="section-subtitle">
+            体验AI如何为「角里囡囡」即时生成营销灵感。选择一个目标客群或输入自定义主题，看看Gemini能带来怎样的创意火花。
+          </p>
+          <div
+            class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl fade-in"
+          >
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button
+                class="ai-theme-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-[#8A817C] hover:text-white transition"
+              >
+                亲子家庭
+              </button>
+              <button
+                class="ai-theme-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-[#8A817C] hover:text-white transition"
+              >
+                年轻情侣
+              </button>
+              <button
+                class="ai-theme-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-[#8A817C] hover:text-white transition"
+              >
+                国际游客
+              </button>
+            </div>
+            <div class="flex gap-2">
+              <input type="text" id="ai-prompt-input"
+              placeholder="或输入自定义主题，如"国风"或"夏日限定""
+              class="flex-grow p-3 border border-gray-300 rounded-lg
+              focus:ring-2 focus:ring-[#8A817C] focus:outline-none">
+              <button
+                id="ai-generate-btn"
+                class="bg-[#3C3C3C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#8A817C] transition"
+              >
+                生成
+              </button>
+            </div>
+            <div
+              id="ai-result-container"
+              class="mt-6 p-6 border border-dashed border-gray-300 rounded-lg min-h-[120px] flex items-center justify-center"
+            >
+              <p id="ai-result-text" class="text-gray-500">
+                AI生成的创意文案将显示在这里...
+              </p>
+              <div id="ai-loader" class="loader hidden"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Roadmap Section -->
+      <section id="roadmap" class="py-20 px-6">
+        <div class="container mx-auto">
+          <h2 class="section-title">合作模式与未来展望</h2>
+          <p class="section-subtitle">
+            我们寻求建立长期共赢的"数字文创合伙人"关系，从朱家角出发，共同描绘智慧文旅的宏伟蓝图。
+          </p>
+          <div class="max-w-4xl mx-auto">
+            <div class="relative pl-8 border-l-2 border-[#8A817C]">
+              <!-- Step 1 -->
+              <div class="mb-12 fade-in">
+                <div
+                  class="absolute w-6 h-6 bg-[#8A817C] rounded-full -left-3.5 border-4 border-[#FDFBF6]"
+                ></div>
+                <h4 class="text-xl font-bold mb-1 text-[#8A817C]">
+                  第一步：跑通朱家角模式 (3-6个月)
+                </h4>
+                <p class="text-gray-600">
+                  完成MVP（最小可行产品）开发与部署，包含核心IP娃娃、App导览及首批合作商户接入，快速验证市场，收集反馈。
+                </p>
+              </div>
+              <!-- Step 2 -->
+              <div class="mb-12 fade-in">
+                <div
+                  class="absolute w-6 h-6 bg-[#8A817C] rounded-full -left-3.5 border-4 border-[#FDFBF6]"
+                ></div>
+                <h4 class="text-xl font-bold mb-1 text-[#8A817C]">
+                  第二步：构建"上海文旅宇宙"
+                </h4>
+                <p class="text-gray-600">
+                  将成功模式复制到豫园、新天地等上海其他地标，实现IP联动，鼓励游客"集邮"，形成强大的网络效应。
+                </p>
+              </div>
+              <!-- Step 3 -->
+              <div class="fade-in">
+                <div
+                  class="absolute w-6 h-6 bg-[#8A817C] rounded-full -left-3.5 border-4 border-[#FDFBF6]"
+                ></div>
+                <h4 class="text-xl font-bold mb-1 text-[#8A817C]">
+                  第三步：打造开放UGC生态
+                </h4>
+                <p class="text-gray-600">
+                  逐步开放平台，允许资深玩家、导游设计自己的"私房游览路线"并获利，最终构建一个充满活力的出行体验生态。
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="text-center mt-12 bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto fade-in"
+          >
+            <h4 class="font-bold text-lg mb-2">我们的合作模式</h4>
+            <p class="text-gray-700">
+              我们提倡
+              <strong class="text-[#8A817C]"
+                >"一次性技术开发费 + 长期运营收入分成"</strong
+              >
+              的模式，确保我们的利益与景区的增长深度绑定，共同成长。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-[#3C3C3C] text-white">
+      <div class="container mx-auto py-12 px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">期待与您携手，共创未来</h2>
+        <p class="max-w-xl mx-auto mb-8">
+          我们相信，「角里囡囡」将是朱家角古镇在文旅融合道路上一次里程碑式的尝试。我们诚挚地希望能与贵方进行一次深度交流。
+        </p>
+        <button
+          class="bg-[#FDFBF6] text-[#3C3C3C] px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#8A817C] hover:text-white transition-colors"
+        >
+          立即联系
+        </button>
+        <div class="mt-8 text-sm text-gray-400">
+          &copy; 2025 「角里囡囡」项目团队. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
