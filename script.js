@@ -36,72 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // --- ARPU Chart ---
-  const ctx = document.getElementById("arpuChart").getContext("2d");
-  const priceSlider = document.getElementById("price-slider");
-  const priceLabel = document.getElementById("price-label");
-
-  const arpuChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: ["当前平均消费", "「角里囡囡」套餐"],
-      datasets: [
-        {
-          label: "游客人均消费 (元)",
-          data: [60, 199],
-          backgroundColor: [
-            "rgba(138, 129, 124, 0.4)",
-            "rgba(138, 129, 124, 0.8)",
-          ],
-          borderColor: ["rgba(138, 129, 124, 1)", "rgba(138, 129, 124, 1)"],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: "消费金额 (元)",
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          display: false,
-        },
-        tooltip: {
-          callbacks: {
-            label: function (context) {
-              let label = context.dataset.label || "";
-              if (label) {
-                label += ": ";
-              }
-              if (context.parsed.y !== null) {
-                label += new Intl.NumberFormat("zh-CN", {
-                  style: "currency",
-                  currency: "CNY",
-                }).format(context.parsed.y);
-              }
-              return label;
-            },
-          },
-        },
-      },
-    },
-  });
-
-  priceSlider.addEventListener("input", (e) => {
-    const newPrice = e.target.value;
-    priceLabel.textContent = newPrice;
-    arpuChart.data.datasets[0].data[1] = newPrice;
-    arpuChart.update();
-  });
-
   // --- Fade-in on Scroll ---
   const faders = document.querySelectorAll(".fade-in");
   const appearOptions = {
@@ -195,6 +129,30 @@ document.addEventListener("DOMContentLoaded", function () {
       const theme = button.textContent;
       promptInput.value = theme;
       generateMarketingIdea(theme);
+    });
+  });
+
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // Stop observing once visible
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements with fade-in class
+  document.addEventListener("DOMContentLoaded", () => {
+    const fadeElements = document.querySelectorAll(".fade-in");
+    fadeElements.forEach((element) => {
+      observer.observe(element);
     });
   });
 });

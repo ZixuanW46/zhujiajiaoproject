@@ -6,22 +6,8 @@ body {
   background-color: #fdfbf6;
   color: #3c3c3c;
 }
-.chart-container {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 300px;
-  max-height: 400px;
-}
-@media (min-width: 768px) {
-  .chart-container {
-    height: 350px;
-  }
-}
 .section-title {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   text-align: center;
