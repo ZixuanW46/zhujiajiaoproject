@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // --- Loading Screen ---
+  const loadingScreen = document.querySelector(".loading-screen");
+
+  // Hide loading screen when all content is loaded
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      loadingScreen.classList.add("fade-out");
+    }, 1000); // Add a small delay for better UX
+  });
+
   // --- Smooth Scrolling ---
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
